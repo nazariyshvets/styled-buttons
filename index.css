@@ -1,0 +1,267 @@
+:root {
+  --black: #211f20;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  min-height: 100dvh;
+  background-color: var(--black);
+}
+
+/* ----- GLASS BUTTON STYLING ----- */
+
+.glass-button {
+  position: relative;
+  padding: 20px 60px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.glass-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.glass-button:hover::after {
+  left: 100%;
+}
+
+.glass-button > span {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 1px;
+  border-radius: 50%;
+  background-color: aqua;
+  box-shadow: 0 0 5px 2px aqua, 0 0 10px 2px aqua, 0 0 15px 2px aqua;
+}
+
+.glass-button > span:nth-child(2) {
+  top: calc(100% - 6px);
+}
+
+.glass-button > span:nth-child(3),
+.glass-button > span:nth-child(4) {
+  top: 10px;
+  left: 10px;
+  width: 1px;
+  height: calc(100% - 20px);
+}
+
+.glass-button > span:nth-child(4) {
+  left: calc(100% - 11px);
+}
+
+/* ----- SNAKE BUTTON STYLING ----- */
+
+.snake-button {
+  position: relative;
+  padding: 20px 50px;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: aqua;
+  text-transform: uppercase;
+  transition: box-shadow 0.4s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.snake-button:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.snake-button > span {
+  position: absolute;
+  border-radius: 100px;
+}
+
+.snake-button > span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, aqua);
+  animation: animate1 2s linear -2s infinite;
+}
+
+.snake-button > span:nth-child(2) {
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, aqua);
+  animation: animate2 2s linear -1s infinite;
+}
+
+.snake-button > span:nth-child(3) {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to left, transparent, aqua);
+  animation: animate3 2s linear -2s infinite;
+}
+
+.snake-button > span:nth-child(4) {
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to top, transparent, aqua);
+  animation: animate4 2s linear -1s infinite;
+}
+
+@keyframes animate1 {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes animate2 {
+  from {
+    top: -100%;
+  }
+
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes animate3 {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes animate4 {
+  from {
+    top: 100%;
+  }
+
+  to {
+    top: -100%;
+  }
+}
+
+/* ----- SKEWED BUTTON STYLING ----- */
+
+.skewed-button {
+  position: relative;
+  padding: 20px 50px;
+  border: 2px solid aqua;
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: aqua;
+  text-transform: uppercase;
+  transition: color 0.5s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.skewed-button:hover {
+  color: white;
+}
+
+.skewed-button:hover::before {
+  left: -20%;
+}
+
+.skewed-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  transform: skewX(35deg);
+  transition: left 1s;
+}
+
+/* ----- FOLDED BUTTON STYLING ----- */
+
+.folded-button {
+  position: relative;
+  padding: 20px 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: aqua;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.folded-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--black) rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5)
+    var(--black);
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: border-width 0.4s;
+}
+
+.folded-button:hover::before {
+  border-width: 20px;
+}
