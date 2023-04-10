@@ -1,1 +1,1 @@
-# Styles buttons
+# Styled buttons
